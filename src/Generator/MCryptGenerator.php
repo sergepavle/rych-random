@@ -55,7 +55,8 @@ class MCryptGenerator implements GeneratorInterface
     public static function isSupported()
     {
         $supported = false;
-        if (function_exists('mcrypt_create_iv')) {
+        if (function_exists('mcrypt_create_iv') &&
+            version_compare(phpversion(), '7.1', '<')) {
             $supported = true;
         }
 
